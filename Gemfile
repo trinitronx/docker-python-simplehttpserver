@@ -15,4 +15,13 @@ group :development do
   gem 'rb-fsevent'
   gem 'guard', '~> 2.13'
   gem 'guard-rspec'
+
+  case RUBY_PLATFORM
+  when /darwin/
+    gem 'terminal-notifier-guard'
+  when /linux/
+    gem 'libnotify'
+  when /win32/
+    gem 'rb-notifu'
+  end
 end
