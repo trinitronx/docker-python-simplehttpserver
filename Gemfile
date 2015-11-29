@@ -11,7 +11,6 @@ end
 
 group :development do
   gem 'travis'
-  gem 'growl'
   gem 'rb-fsevent'
   gem 'guard', '~> 2.13'
   gem 'guard-rspec'
@@ -19,6 +18,7 @@ group :development do
   case RUBY_PLATFORM
   when /darwin/
     gem 'terminal-notifier-guard'
+    gem 'growl'
   when /linux/
     gem 'libnotify'
   when /win32/
