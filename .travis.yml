@@ -12,7 +12,7 @@ env:
 
 install:
   - npm install -g validate-dockerfile
-  - bundle install
+  - bundle install --without development
 
 script:
   - docklint Dockerfile
