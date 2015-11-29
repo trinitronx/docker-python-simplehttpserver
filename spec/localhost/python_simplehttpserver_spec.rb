@@ -73,6 +73,25 @@ describe 'trinitronx/python-simplehttpserver' do
       describe port(8080) do
         it { should be_listening }
       end
+
+      context "when serving a test file" do
+        before(:all) do
+          Specinfra::Runner.send_file(File.join(File.dirname(__FILE__), '..', 'fixtures', 'helloworld.txt'), '/var/www/')
+        end
+
+        describe file('/var/www/helloworld.txt') do
+          it { should be_file }
+        end
+
+        describe command('wget -O - http://localhost:8080/helloworld.txt') do
+          its(:stdout) { should match /^hello simple world$/ }
+        end
+
+        describe command('wget -O - http://localhost:8080/') do
+          its(:stdout) { should match /Directory listing for \// }
+          its(:stdout) { should match /<a href="helloworld\.txt">helloworld\.txt<\/a>/ }
+        end
+      end
     end
   end
 end
