@@ -66,6 +66,14 @@ describe 'trinitronx/python-simplehttpserver' do
         it { should be_file }
       end
 
+      describe command("ps auxww") do
+        its(:stdout) { should match /just testing... debug processes/ }
+      end
+
+      describe command("netstat -tunl") do
+        its(:stdout) { should match /just testing... debug network/ }
+      end
+
       describe command("ps -o args= | grep python | grep -v grep | head -n1") do
         its(:stdout) { should match /-m SimpleHTTPServer 8080/ }
       end
