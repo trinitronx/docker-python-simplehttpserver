@@ -8,3 +8,11 @@ group :test do
   gem 'serverspec', '~> 2.24' # Docker 1.8 support
   gem 'specinfra', '~> 2.44' # for Docker backend + send_file & commit (https://github.com/mizzy/specinfra/releases/tag/v2.43.11)
 end
+
+group :development do
+  gem 'travis'
+  gem 'growl'
+  gem 'rb-fsevent'
+  gem 'guard', '~> 2.13'
+  gem 'guard-rspec'
+end
