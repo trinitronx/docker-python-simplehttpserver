@@ -95,6 +95,14 @@ describe 'trinitronx/python-simplehttpserver' do
           its(:stdout) { should match /just testing... debug network/ }
         end
 
+        describe command("cat /etc/os-release") do
+          its(:stdout) { should match /just testing... debug os-release/ }
+        end
+
+        describe command("uname -a") do
+          its(:stdout) { should match /just testing... debug uname/ }
+        end
+
         describe file('/var/www/helloworld.txt') do
           it { should be_file }
         end
