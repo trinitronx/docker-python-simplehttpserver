@@ -94,12 +94,14 @@ describe 'trinitronx/python-simplehttpserver' do
         describe command('wget -O - http://localhost:8080/helloworld.txt') do
           its(:stdout) { should match /^hello simple world$/ }
           its(:stderr) { is_expected.not_to match /can't connect/ }
+          its(:exit_status) { is_expected.to eq 0 }
         end
 
         describe command('wget -O - http://localhost:8080/') do
           its(:stdout) { should match /Directory listing for \// }
           its(:stdout) { should match /<a href="helloworld\.txt">helloworld\.txt<\/a>/ }
           its(:stderr) { is_expected.not_to match /can't connect/ }
+          its(:exit_status) { is_expected.to eq 0 }
         end
       end
     end
