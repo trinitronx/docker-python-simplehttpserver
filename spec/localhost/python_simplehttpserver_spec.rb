@@ -40,6 +40,15 @@ describe 'trinitronx/python-simplehttpserver' do
       set :backend, :docker
       set :docker_image, image.id
 
+      # Busybox image uses:
+      # # cat /etc/os-release
+      # NAME=Buildroot
+      # VERSION=2014.02
+      # ID=buildroot
+      # VERSION_ID=2014.02
+      # PRETTY_NAME="Buildroot 2014.02"
+      # uname -a
+      # Linux 8aaca671f421 4.1.13-boot2docker #1 SMP Fri Nov 20 19:05:50 UTC 2015 x86_64 GNU/Linux
     end
   end
 
@@ -57,9 +66,8 @@ describe 'trinitronx/python-simplehttpserver' do
         it { should be_file }
       end
 
-      describe process("python") do
-        it { should be_running }
-        its(:args) { should match /-m SimpleHTTPServer 8080/ }
+      describe command("ps -o args= | grep python | grep -v grep | head -n1") do
+        its(:stdout) { should match /-m SimpleHTTPServer 8080/ }
       end
 
       describe port(8080) do
