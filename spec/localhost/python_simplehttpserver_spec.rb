@@ -79,7 +79,11 @@ describe 'trinitronx/python-simplehttpserver' do
       end
 
       describe port(8080) do
-        it { should be_listening }
+        # Avoid race condition when python is running but hasn't grabbed the port yet...
+        it "grabs port 8080" do
+          wait_for { port(8080) }.to be_listening
+        end
+        it { is_expected.to be_listening }
       end
 
       context "when serving a test file" do
@@ -105,6 +109,14 @@ describe 'trinitronx/python-simplehttpserver' do
 
         describe file('/var/www/helloworld.txt') do
           it { should be_file }
+        end
+
+        describe port(8080) do
+          # Avoid race condition when python is running but hasn't grabbed the port yet...
+          it "grabs port 8080" do
+            wait_for { port(8080) }.to be_listening
+          end
+          it { is_expected.to be_listening }
         end
 
         describe command('wget -O - http://localhost:8080/helloworld.txt') do

@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 group :test do
   gem 'rake'
+  gem 'rspec-wait'
   gem 'git'
   gem 'docker-api'
   gem 'serverspec', '~> 2.24' # Docker 1.8 support
