@@ -66,14 +66,6 @@ describe 'trinitronx/python-simplehttpserver' do
         it { should be_file }
       end
 
-      describe command("ps auxww") do
-        its(:stdout) { should match /just testing... debug processes/ }
-      end
-
-      describe command("netstat -tunl") do
-        its(:stdout) { should match /just testing... debug network/ }
-      end
-
       describe command("ps -o args= | grep python | grep -v grep | head -n1") do
         its(:stdout) { should match /-m SimpleHTTPServer 8080/ }
       end
@@ -89,22 +81,6 @@ describe 'trinitronx/python-simplehttpserver' do
       context "when serving a test file" do
         before(:all) do
           Specinfra::Runner.send_file(File.join(File.dirname(__FILE__), '..', 'fixtures', 'helloworld.txt'), '/var/www/')
-        end
-
-        describe command("ps auxww") do
-          its(:stdout) { should match /just testing... debug processes/ }
-        end
-
-        describe command("netstat -tunl") do
-          its(:stdout) { should match /just testing... debug network/ }
-        end
-
-        describe command("cat /etc/os-release") do
-          its(:stdout) { should match /just testing... debug os-release/ }
-        end
-
-        describe command("uname -a") do
-          its(:stdout) { should match /just testing... debug uname/ }
         end
 
         describe file('/var/www/helloworld.txt') do
