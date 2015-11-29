@@ -87,6 +87,14 @@ describe 'trinitronx/python-simplehttpserver' do
           Specinfra::Runner.send_file(File.join(File.dirname(__FILE__), '..', 'fixtures', 'helloworld.txt'), '/var/www/')
         end
 
+        describe command("ps auxww") do
+          its(:stdout) { should match /just testing... debug processes/ }
+        end
+
+        describe command("netstat -tunl") do
+          its(:stdout) { should match /just testing... debug network/ }
+        end
+
         describe file('/var/www/helloworld.txt') do
           it { should be_file }
         end
