@@ -12,6 +12,7 @@ env:
 
 install:
   - npm install -g validate-dockerfile
+  - gem install bundler
   - bundle install --without development
 
 script:
