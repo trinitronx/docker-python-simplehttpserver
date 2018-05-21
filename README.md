@@ -1,9 +1,9 @@
 Docker Python SimpleHTTPServer
 ==============================
-[![Build Status](https://img.shields.io/travis/trinitronx/python-simplehttpserver.svg)](https://travis-ci.org/trinitronx/python-simplehttpserver)
+[![Build Status](https://img.shields.io/travis/trinitronx/docker-python-simplehttpserver.svg)](https://travis-ci.org/trinitronx/docker-python-simplehttpserver)
 [![Docker Pulls](https://img.shields.io/docker/pulls/trinitronx/python-simplehttpserver.svg)](https://hub.docker.com/r/trinitronx/python-simplehttpserver)
 [![Docker Stars](https://img.shields.io/docker/stars/trinitronx/python-simplehttpserver.svg)](https://hub.docker.com/r/trinitronx/python-simplehttpserver)
-[![Gittip](http://img.shields.io/gittip/trinitronx.svg)](https://www.gittip.com/trinitronx)
+[![Liberapay goal progress](https://img.shields.io/liberapay/goal/trinitronx.svg)](https://en.liberapay.com/trinitronx)
 
 A Simple & Compact (< ~8.5 MB) Python webserver in a Docker Container.
 
