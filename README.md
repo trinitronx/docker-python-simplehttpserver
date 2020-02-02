@@ -4,6 +4,7 @@ Docker Python SimpleHTTPServer
 [![Docker Pulls](https://img.shields.io/docker/pulls/trinitronx/python-simplehttpserver.svg)](https://hub.docker.com/r/trinitronx/python-simplehttpserver)
 [![Docker Stars](https://img.shields.io/docker/stars/trinitronx/python-simplehttpserver.svg)](https://hub.docker.com/r/trinitronx/python-simplehttpserver)
 [![Liberapay goal progress](https://img.shields.io/liberapay/goal/trinitronx.svg)](https://en.liberapay.com/trinitronx)
+[![Donate using Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/trinitronx/donate)
 
 A Simple & Compact (< ~8.5 MB) Python webserver in a Docker Container.
 
@@ -32,4 +33,9 @@ To run server so it is only accessible to linked containers:
     # Use with trinitronx/fastest-servers as a MIRRORLIST_HOST for serving up mirrors.txt file for fastest-servers.rb to filter down to fastest found
     sudo docker run -ti --link python_simplehttpserver -e FASTEST_SERVER_DEBUG=true -e MIRRORLIST_HOST=python_simplehttpserver -e MIRRORLIST_PORT=8080 -v /tmp/:/tmp/ trinitronx/fastest-servers
 
+License
+-------
 
+This project is licensed under the [GNU GPLv3][1].  See `LICENSE` file for full text.
+
+[1]: https://choosealicense.com/licenses/gpl-3.0/#
