@@ -15,7 +15,8 @@ env:
 install:
   - npm install -g validate-dockerfile
   - gem install bundler
-  - bundle install --without development
+  - bundle config set --local without 'development'
+  - bundle install
 
 script:
   - docklint Dockerfile
